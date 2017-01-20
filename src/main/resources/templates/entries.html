@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Diary entries</title>
+        <style type="text/css">body { font-family: sans-serif; }</style>
+    </head>
+    <body>
+
+        <h1>Diary entries</h1>
+
+        <div th:each="entry : ${entries}">
+            <h2 th:utext="${entry.title}">title</h2>
+            <p th:utext="${entry.text}">text</p>
+            <p><a th:href="@{/delete(number=${entry.number})}">delete</a></p>
+        </div>
+
+        <h1>Add a new diary entry</h1>
+
+        <form action="#" th:action="@{/add}" method="POST">
+            <p><label for="title">Title</label>: <input type="text" name="title" id="title"/></p>
+            <p><label for="text">Text</label>: <input type="text" name="text" id="text"/></p>
+            <p><input type="submit" value="Add entry" /></p>
+        </form>
+
+    </body>
+</html>
